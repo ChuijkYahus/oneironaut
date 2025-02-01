@@ -37,6 +37,7 @@ import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class RenderBerryBushBlock extends PlantBlock implements Fertilizable {
@@ -54,6 +55,8 @@ public class RenderBerryBushBlock extends PlantBlock implements Fertilizable {
     public static final IntProperty THOUGHTS;
     private static final VoxelShape SMALL_SHAPE;
     private static final VoxelShape LARGE_SHAPE;
+
+    private static final HashMap<Entity, Long> FEED_TIMESTAMP_MAP = new HashMap<>();
 
     @Override
     public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
@@ -124,7 +127,11 @@ public class RenderBerryBushBlock extends PlantBlock implements Fertilizable {
             if (!world.isClient && (entity.lastRenderX != entity.getX() || entity.lastRenderZ != entity.getZ())) {
                 double d = Math.abs(entity.getX() - entity.lastRenderX);
                 double e = Math.abs(entity.getZ() - entity.lastRenderZ);
-                if ((d >= 0.003000000026077032 || e >= 0.003000000026077032) && world.getTime() % 5 == 0) {
+                if (
+                        (d >= 0.003000000026077032 || e >= 0.003000000026077032)
+                        && world.getTime() >= FEED_TIMESTAMP_MAP.getOrDefault(entity, Long.MIN_VALUE) + 10
+                ) {
+                    FEED_TIMESTAMP_MAP.put(entity, world.getTime());
                     this.feed(state, world, pos, livingEntity);
                 }
             }
