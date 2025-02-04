@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:allay",
+    "minecraft:wither",
+    "minecraft:ender_dragon",
+    "minecraft:axolotl"
+  ]
+}

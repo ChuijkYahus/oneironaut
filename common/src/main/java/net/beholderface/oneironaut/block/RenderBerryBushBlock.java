@@ -2,6 +2,7 @@ package net.beholderface.oneironaut.block;
 
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import net.beholderface.oneironaut.MiscAPIKt;
+import net.beholderface.oneironaut.Oneironaut;
 import net.beholderface.oneironaut.casting.OvercastDamageEnchant;
 import net.beholderface.oneironaut.registry.OneironautBlockRegistry;
 import net.beholderface.oneironaut.registry.OneironautItemRegistry;
@@ -150,6 +151,12 @@ public class RenderBerryBushBlock extends PlantBlock implements Fertilizable {
             DamageSource berryDamage = target.getDamageSources().sweetBerryBush();
             target.damage(berryDamage, target.isPlayer() ? 0.001f : 0f);
             OvercastDamageEnchant.applyMindDamage(null, target, 2, false);
+            Identifier blacklistTagID = Identifier.of(Oneironaut.MOD_ID, "monkfruit_blacklist");
+            assert blacklistTagID != null;
+            var blacklistTag = MiscAPIKt.getEntityTagKey(blacklistTagID);
+            if (target.getType().isIn(blacklistTag)){
+                return;
+            }
             //did that damage flay the target?
             if (target instanceof MobEntity mob){
                 brainswept = IXplatAbstractions.INSTANCE.isBrainswept(mob);
