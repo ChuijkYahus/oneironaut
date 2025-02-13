@@ -12,6 +12,7 @@
     "EdifyBushMixinGrower",
     "EdifyBushMixinSpell",
     "EternalChorusMixin",
+    "FishUpScrollMixin",
     "GlowAmbitEffectAmbitMixin",
     "GlowAmbitEffectGlowMixin",
     "LensMediaTooltipMixin",
