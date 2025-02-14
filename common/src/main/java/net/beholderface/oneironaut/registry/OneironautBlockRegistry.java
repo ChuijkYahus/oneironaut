@@ -1,5 +1,6 @@
 package net.beholderface.oneironaut.registry;
 
+import at.petrak.hexcasting.common.blocks.circles.BlockSlate;
 import at.petrak.hexcasting.common.lib.HexBlocks;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -85,6 +86,9 @@ public class OneironautBlockRegistry {
     public static RegistrySupplier<AmethystClusterBlock> PSEUDOAMETHYST_BUD_LARGE = BLOCKS.register("pseudoamethyst_bud_large", ()-> new AmethystClusterBlock(5, 3, AbstractBlock.Settings.copy(Blocks.LARGE_AMETHYST_BUD)));
     public static RegistrySupplier<AmethystClusterBlock> PSEUDOAMETHYST_BUD_MEDIUM = BLOCKS.register("pseudoamethyst_bud_medium", ()-> new AmethystClusterBlock(4, 3, AbstractBlock.Settings.copy(Blocks.MEDIUM_AMETHYST_BUD)));
     public static RegistrySupplier<AmethystClusterBlock> PSEUDOAMETHYST_BUD_SMALL = BLOCKS.register("pseudoamethyst_bud_small", ()-> new AmethystClusterBlock(3, 4, AbstractBlock.Settings.copy(Blocks.SMALL_AMETHYST_BUD)));
+
+    public static RegistrySupplier<SpaceBombBlock> SPACE_BOMB = BLOCKS.register("spacebomb", ()->new SpaceBombBlock(AbstractBlock.Settings.copy(Blocks.RESPAWN_ANCHOR).luminance(createLightLevelFromBoolBlockState(BlockSlate.ENERGIZED, 13))));
+    public static RegistrySupplier<BlockEntityType<SpaceBombBlockEntity>> SPACE_BOMB_ENTITY = BLOCK_ENTITIES.register("spacebomb_entity", ()->BlockEntityType.Builder.create(SpaceBombBlockEntity::new, SPACE_BOMB.get()).build(null));
 
     //not intended to be the real-world monk fruit, just thought it was a good name, especially considering the etymology (https://en.wikipedia.org/wiki/Siraitia_grosvenorii#Etymology_and_regional_names)
     public static RegistrySupplier<RenderBerryBushBlock> RENDER_BUSH = BLOCKS.register("monkfruit_bush", ()->new RenderBerryBushBlock(AbstractBlock.Settings.copy(Blocks.SWEET_BERRY_BUSH)));

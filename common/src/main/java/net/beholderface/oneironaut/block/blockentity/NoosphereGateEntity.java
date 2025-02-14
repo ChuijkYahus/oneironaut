@@ -2,6 +2,7 @@ package net.beholderface.oneironaut.block.blockentity;
 
 import at.petrak.hexcasting.common.particles.ConjureParticleOptions;
 import net.beholderface.oneironaut.MiscAPIKt;
+import net.beholderface.oneironaut.Oneironaut;
 import net.beholderface.oneironaut.registry.OneironautBlockRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -153,7 +154,7 @@ public class NoosphereGateEntity extends BlockEntity {
             }
         } else {
             //purple slipway thing
-            Random rand = Random.create();
+            Random rand = world.random;
             int i = 0;
             while (i < 8){
                 i++;
@@ -168,7 +169,7 @@ public class NoosphereGateEntity extends BlockEntity {
                 gaussX = gaussX * gaussNormalize;
                 gaussY = gaussY * gaussNormalize;
                 gaussZ = gaussZ * gaussNormalize;
-                if(!world.getRegistryKey().getValue().toString().equals("oneironaut:noosphere")){
+                if(world != Oneironaut.getNoosphere()){
                     double particlePosX = doublePos.x + gaussX * rand.nextDouble();
                     double particlePosY = doublePos.y + gaussY * rand.nextDouble();
                     double particlePosZ = doublePos.z + gaussZ * rand.nextDouble();

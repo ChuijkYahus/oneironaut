@@ -38,7 +38,9 @@ import java.util.function.Predicate;
 public class FishUpScrollMixin {
     @WrapOperation(method = "use", at = @At(
             value = "INVOKE", remap = true,
-            target = "Lnet/minecraft/loot/LootTable;generateLoot(Lnet/minecraft/loot/context/LootContextParameterSet;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;"
+            //concat is just to make it more readable
+            target = "Lnet/minecraft/loot/LootTable;generateLoot(Lnet/minecraft/loot/context/LootContextParameterSet;)" +
+                    "Lit/unimi/dsi/fastutil/objects/ObjectArrayList;"
     ),
             remap = true
     )
