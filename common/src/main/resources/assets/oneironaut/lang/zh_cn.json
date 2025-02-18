@@ -245,7 +245,7 @@
   "oneironaut.page.flayrevival.3": "这些伪意识确实能驱动躯体，一如身体的原主人，但它们离真正的所谓智慧还差得远，换成适用于村民的宽松定义也是一样。因此，以此方法“恢复正常”的村民会失去先前的职业经验，也无法再获取此类经验了。",
   "oneironaut.page.flayrevival.4": "不过，他们依然保留了繁衍的能力。他们的后代不会受到我先前行为的影响。$(br2)我不太确定为什么村民恢复后都喜欢上了绿色的衣物，但这种性质确实方便我辨识哪些村民不堪大用。",
   "oneironaut.page.monkfruit.1": "我发现对甜浆果丛使用$(l:patterns/spells/blockworks#hexcasting:edify)启迪树苗$(/l)法术能变出一种相当有趣的植物。它和原来的灌木很像，但它的棘刺中融有媒质场，能吸走其刺中的生物的意识以让自己生长。它不刺人也能生长（虽然很慢），但仍需周围存在具有意识的生物才能结出少量媒质。",
-  "oneironaut.page.monkfruit.2": "它结出的果实相当甜，且能加工处理成糖。而且，食用一颗似乎能向空气释放出些许媒质，又会进一步为我身上可以重新填充媒质的物品充入媒质。摘果子时务必要小心灌木中的刺。",
+  "oneironaut.page.monkfruit.2": "它结出的果实相当甜，且能加工处理成糖。而且，这种果实在被消化的时候似乎能释放出些许媒质，又会进一步为我身上可以重新填充媒质的物品充入媒质。摘果子时务必要小心灌木中的刺。",
   "oneironaut.page.monkfruit.3": "成熟植株上剪下的枝条依然具有这些危险的性质，可以用来合成一把不祥的刀。$(br2)这把刀和附有低等级$(l:oneironaut:items/mindrender)意识撕裂$(/l)魔咒的剑类似，但它更为精确：撕裂意识时能把对形体的附带损伤降到最低。如果我有这个想法，当然可以把它用作普通的冷兵器，但确实要承担杀死目标的风险。",
   "oneironaut.page.monkfruit.4": "$(o)这又不是什么高端科技。$()",
 
@@ -312,6 +312,7 @@
   "text.oneironaut.clearIdeasResponse": "已清除iota存储映射。",
   "effect.oneironaut.detection_resistance": "媒质遮罩",
   "effect.oneironaut.not_missing": "扬升共振",
+  "effect.oneironaut.rumination": "反刍",
   "enchantment.oneironaut.overcast_damage": "意识撕裂",
   "itemGroup.oneironaut.oneironaut": "航梦",
   "oneironaut.tooltip.wispcapturedevice.haswisp": "包含具有%s个紫水晶粉、咒术印识为%s的咒灵。",
