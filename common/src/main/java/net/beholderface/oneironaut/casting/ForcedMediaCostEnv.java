@@ -7,7 +7,7 @@ import net.minecraft.util.Hand;
 
 public class ForcedMediaCostEnv extends PlayerBasedCastEnv {
 
-    protected ForcedMediaCostEnv(ServerPlayerEntity caster, Hand castingHand) {
+    public ForcedMediaCostEnv(ServerPlayerEntity caster, Hand castingHand) {
         super(caster, castingHand);
     }
 

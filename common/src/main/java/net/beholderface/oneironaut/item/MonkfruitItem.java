@@ -6,8 +6,11 @@ import at.petrak.hexcasting.api.utils.HexUtils;
 import net.beholderface.oneironaut.Oneironaut;
 import net.beholderface.oneironaut.casting.lichdom.LichData;
 import net.beholderface.oneironaut.casting.lichdom.LichdomManager;
+import net.beholderface.oneironaut.registry.OneironautMiscRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.ItemStack;
@@ -27,37 +30,14 @@ public class MonkfruitItem extends AliasedBlockItem {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        if (!world.isClient){
-            double maxGaussian = 7.0;
-            double rawGaussian = world.random.nextGaussian();
-            double gaussian = Math.min(Math.max((rawGaussian * (maxGaussian / 2)) + (maxGaussian / 2), 0), maxGaussian);
-            double overallReleased = gaussian + 3;
-            //Oneironaut.LOGGER.info("Monkfruit releasing " + overallReleased + " dust, raw gaussian is " + rawGaussian);
-            List<ItemStack> mediaHolders = new ArrayList<>();
-            if (user instanceof ServerPlayerEntity player){
-                for (ItemStack checkedStack : player.getInventory().main){
-                    if (checkedStack.getItem() instanceof MediaHolderItem battery){
-                        if (battery.canRecharge(checkedStack) && battery.getMaxMedia(checkedStack) != battery.getMedia(checkedStack)){
-                            mediaHolders.add(checkedStack);
-                        }
-                    }
-                }
-                if (player.getStackInHand(Hand.OFF_HAND).getItem() instanceof MediaHolderItem battery){
-                    if (battery.canRecharge(player.getStackInHand(Hand.OFF_HAND))){
-                        mediaHolders.add(player.getStackInHand(Hand.OFF_HAND));
-                    }
-                }
-                boolean isLich = LichdomManager.isPlayerLich(player);
-                int quantity = mediaHolders.size() + (isLich ? 1 : 0);
-                long inserted = (long) ((overallReleased / quantity) * MediaConstants.DUST_UNIT);
-                for (ItemStack battery : mediaHolders){
-                    MediaHolderItem type = (MediaHolderItem) battery.getItem();
-                    type.insertMedia(battery, inserted, false);
-                }
-                if (isLich){
-                    LichData data = LichdomManager.getLichData(player);
-                    data.insertMedia(inserted, false);
-                }
+        if (user instanceof PlayerEntity player){
+            var effects = player.getActiveStatusEffects();
+            StatusEffect rumination = OneironautMiscRegistry.RUMINATION.get();
+            if (effects.containsKey(rumination)){
+                StatusEffectInstance instance = effects.get(rumination);
+                effects.put(rumination, new StatusEffectInstance(rumination, instance.getDuration() + 100, 0, false, false, true));
+            } else {
+                player.addStatusEffect(new StatusEffectInstance(rumination, 100, 0, false, false, true));
             }
         }
         return user.eatFood(world, stack);

@@ -35,11 +35,24 @@ public class SpaceBombBlockEntity extends BlockEntity {
     public static final int COUNTDOWN_LENGTH = 20 * 30;
     public static final String COUNTDOWN_TAG = "countdown";
     private int countdown = COUNTDOWN_LENGTH;
+    public static final String POSITION_TAG = "cached_position";
+    private BlockPos cachedPos = null;
     public SpaceBombBlockEntity(BlockPos pos, BlockState state) {
         super(OneironautBlockRegistry.SPACE_BOMB_ENTITY.get(), pos, state);
+        if (this.cachedPos == null){
+            this.cachedPos = pos;
+        }
     }
 
     public void tick(World world, BlockPos pos, BlockState state){
+        //no cardboard box fuckery for you
+        if (!this.pos.equals(cachedPos)){
+            this.countdown = COUNTDOWN_LENGTH;
+            cachedPos = this.pos;
+            if (state.get(BlockSlate.ENERGIZED)){
+                world.setBlockState(pos, state.with(BlockSlate.ENERGIZED, false));
+            }
+        }
         if (this.world != null){
             Vec3d doublePos = new Vec3d(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
             boolean imminent = this.countdown < COUNTDOWN_LENGTH / (COUNTDOWN_LENGTH / 100);
@@ -155,12 +168,16 @@ public class SpaceBombBlockEntity extends BlockEntity {
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         nbt.putInt(COUNTDOWN_TAG, this.countdown);
+        int[] posArray = {this.cachedPos.getX(), this.cachedPos.getY(), this.cachedPos.getZ()};
+        nbt.putIntArray(POSITION_TAG, posArray);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         this.countdown = nbt.getInt(COUNTDOWN_TAG);
+        int[] posArray = nbt.getIntArray(POSITION_TAG);
+        this.cachedPos = new BlockPos(posArray[0], posArray[1], posArray[2]);
     }
     @Nullable
     @Override

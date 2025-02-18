@@ -1,11 +1,9 @@
-package net.beholderface.oneironaut.casting;
+package net.beholderface.oneironaut.status;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.random.Random;
 import net.beholderface.oneironaut.registry.OneironautMiscRegistry;
