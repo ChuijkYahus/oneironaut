@@ -169,7 +169,7 @@ public class NoosphereGateEntity extends BlockEntity {
                 gaussX = gaussX * gaussNormalize;
                 gaussY = gaussY * gaussNormalize;
                 gaussZ = gaussZ * gaussNormalize;
-                if(world != Oneironaut.getNoosphere()){
+                if(!world.getRegistryKey().getValue().toString().equals("oneironaut:noosphere")){
                     double particlePosX = doublePos.x + gaussX * rand.nextDouble();
                     double particlePosY = doublePos.y + gaussY * rand.nextDouble();
                     double particlePosZ = doublePos.z + gaussZ * rand.nextDouble();
