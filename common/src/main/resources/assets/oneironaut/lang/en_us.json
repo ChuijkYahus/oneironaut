@@ -59,6 +59,7 @@
   "item.oneironaut.mind_scalpel": "Synaptic Scalpel",
   "item.oneironaut.monkfruit": "Monkfruit",
   "item.oneironaut.rending_thorns": "Rending Thorns",
+  "item.oneironaut.library_card": "Akashic Library Card",
 
   "block.oneironaut.noosphere_gate": "Inscrutable Rift",
   "block.oneironaut.pseudoamethyst_block": "Pseudoamethyst Block",
@@ -174,7 +175,7 @@
   "oneironaut.page.super_budding.3": "Additionally, when cultivated in the Noosphere, budding pseudoamethyst will produce pseudoamethyst clusters rather than conventional amethyst. These clusters will of course yield pseudoamethyst shards, as well as an unstable form of pseudoamethyst containing about four times as much media as the regular shards. Unfortunately, due to this instability, it cannot be directly converted into usable media. However, it can be converted into many other forms of media crystal by simply bringing the two items together.",
   "oneironaut.page.super_budding.4": "It seems to react to my gaze, as if endowed with some form of perception.",
   "oneironaut.page.super_budding.5": "The media generation rate of budding pseudoamethyst is such that even when immersed in thought slurry to inhibit crystal formation, it will still yield usable amounts of media. While the overall supply is nigh-endless, the amount accessible to any given action is quite small, like an inch-deep ocean a million miles across. However, due to this minimal depth, the media will dissipate rapidly before reaching my staff when accessed from afar, such as when recharging an item.",
-  "oneironaut.page.super_budding.6": "Constantly provides about a tenth of an amethyst dust worth of media. While I certainly $(o)can$() hold several of these in order to gain access to more easy media, this results in rapidly-diminishing returns.",
+  "oneironaut.page.super_budding.6": "Constantly provides about a tenth of an amethyst dust worth of media. While I $(o)can$() hold several of these in order to gain access to more media, this results in rapidly-diminishing returns. $(br)I should be careful not to craft with the wrong phial.",
   "oneironaut.page.super_budding.7": "I can also jam one into a trinket in order to replace its media supply with an inexhaustible phial, giving it access to the endless media within. However, it cannot use any media other than that provided by the phial.",
   "oneironaut.page.super_budding.8": "Writes a hex to the bottomless trinket in my other hand. Costs ten charged amethyst.",
   "oneironaut.page.idea_inscription.1": "As the noosphere is a realm of thought, it stands to reason that it could be used for information storage. These patterns do just that, inscribing an iota into the noosphere and reading it back (regardless of my current dimension). They can also store iotas inside the minds of other beings, assuming their thoughts are as... $(o)unfettered$() as my own. In the notation for these patterns, \"key\" refers to any vector or compatible entity.",
@@ -248,6 +249,8 @@
   "oneironaut.page.monkfruit.2": "The fruit that this bush produces is quite sweet, and can be processed into sugar. Additionally, it releases bits of media during digestion, which seek out rechargeable items on my person. I should be wary of the thorns while picking the fruit.",
   "oneironaut.page.monkfruit.3": "Twigs sheared off of the mature bush remain dangerous, and can be used to craft a rather ominous blade.$(br2)This blade acts much like a sword enchanted with low-level $(l:oneironaut:items/mindrender)Mind Render$(/l), though it is far more precise, able to rend minds while causing minimal collateral damage to the flesh. I can of course use it more like a conventional blade if I like, but this does risk killing the target outright.",
   "oneironaut.page.monkfruit.4": "$(o)It's not rocket science.$()",
+  "oneironaut.page.library_card.1": "In my search for a truly universal data storage method, I have designed a small device which allows me to read from Akashic Records in other dimensions while on my person. I need only write a spatial imprint to the item, and any future akashic read operations will be redirected to the stored dimension.$(br)Unfortunately, it does not allow me to $(o)write to$() them, but this is certainly better than nothing.",
+  "oneironaut.page.library_card.2": "$(o)It seems to exude some kind of sticky gloop.$()",
 
   "this.is.a.comment.5": "Advancements--------------------------------------------------------------------------------------------",
   "oneironaut.advancements.noosphere.enter": "A Realm of Thought and Dream",

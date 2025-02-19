@@ -25,6 +25,10 @@ public class DimIota extends Iota {
     public DimIota(@NotNull ServerWorld world){
         super(OneironautIotaTypeRegistry.DIM, world.getRegistryKey().getValue().toString());
     }
+    public DimIota(@NotNull RegistryKey<World> worldRegistryKey){
+        super(OneironautIotaTypeRegistry.DIM, worldRegistryKey.getValue().toString());
+    }
+    public static final String DIM_KEY = "dim_key";
 
     /*public NbtElement getKey(){
         var ctag = HexUtils.downcast(this.payload, NbtCompound.TYPE);
@@ -57,21 +61,21 @@ public class DimIota extends Iota {
     public @NotNull NbtElement serialize() {
         var data = new NbtCompound();
         var payload = this.payload;
-        data.putString("dim_key", (String) payload);
+        data.putString(DIM_KEY, (String) payload);
         return data;
     }
     public static IotaType<DimIota> TYPE = new IotaType<>() {
         @Override
         public DimIota deserialize(NbtElement tag, ServerWorld world) throws IllegalArgumentException {
             var ctag = HexUtils.downcast(tag, NbtCompound.TYPE);
-            return new DimIota(ctag.getString("dim_key"));
+            return new DimIota(ctag.getString(DIM_KEY));
         }
 
         @Override
         public Text display(NbtElement tag) {
             //return Text.translatable("text.oneironaut.dimiota.name");
             var ctag = HexUtils.downcast(tag, NbtCompound.TYPE);
-            var text = Text.of(ctag.getString("dim_key"));
+            var text = Text.of(ctag.getString(DIM_KEY));
             //var id = world.getValue().toString();
             Style originalStyle = text.getStyle();
             Style formattedStyle = switch (text.getString()) {

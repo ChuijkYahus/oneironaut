@@ -16,7 +16,7 @@ class OpGetDim (val sent: Boolean) : ConstMediaAction {
     override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
         var output : Iota = NullIota()
         if (!sent){
-            val casterWorld : String = env.world.registryKey.value.toString()
+            val casterWorld = env.world
             output = DimIota(casterWorld)
         } else {
             if (env.castingEntity is ServerPlayerEntity){

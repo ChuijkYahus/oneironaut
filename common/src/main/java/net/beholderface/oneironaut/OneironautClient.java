@@ -10,6 +10,7 @@ import dev.architectury.registry.item.ItemPropertiesRegistry;
 import net.beholderface.oneironaut.block.ThoughtSlurry;
 import net.beholderface.oneironaut.block.blockentity.HoverElevatorBlockEntity;
 import net.beholderface.oneironaut.block.blockentity.WispBatteryEntity;
+import net.beholderface.oneironaut.item.ItemLibraryCard;
 import net.beholderface.oneironaut.item.ReverberationRod;
 import net.beholderface.oneironaut.item.WispCaptureItem;
 import net.beholderface.oneironaut.registry.OneironautBlockRegistry;
@@ -164,6 +165,9 @@ public class OneironautClient {
 
         ItemPropertiesRegistry.register(OneironautItemRegistry.SHIFTING_PSEUDOAMETHYST.get(), new Identifier(Oneironaut.MOD_ID, "observation"),
                 OneironautClient::processObservationPredicate);
+        ItemPropertiesRegistry.register(OneironautItemRegistry.LIBRARY_CARD.get(), new Identifier(Oneironaut.MOD_ID, "written"), (stack, world, holder, holderID) -> {
+            return ((ItemLibraryCard)stack.getItem()).getDimension(stack) != null ? 0.99f : -0.01f;
+        });
 
         //ah yes, because I definitely want to turn my expensive staff into a much less expensive variant
         Item[] nameSensitiveStaves = {OneironautItemRegistry.ECHO_STAFF.get(), OneironautItemRegistry.BEACON_STAFF.get(), OneironautItemRegistry.SPOON_STAFF.get()};

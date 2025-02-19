@@ -17,7 +17,8 @@
     "GlowAmbitEffectGlowMixin",
     "LensMediaTooltipMixin",
     "OneResetSoundMixin",
-    "SlurryFrostWalkerMixin"
+    "SlurryFrostWalkerMixin",
+    "MixinHonorLibraryCardReads"
   ],
   "injectors": {
     "defaultRequire": 1
