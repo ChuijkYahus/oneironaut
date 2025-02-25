@@ -8,6 +8,7 @@ import net.beholderface.oneironaut.block.*;
 import net.beholderface.oneironaut.block.blockentity.*;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.BooleanProperty;
@@ -80,7 +81,7 @@ public class OneironautBlockRegistry {
 
     public static RegistrySupplier<HoverElevatorBlock> HOVER_ELEVATOR = BLOCKS.register("hover_elevator", ()-> new HoverElevatorBlock(AbstractBlock.Settings.copy(HexBlocks.SLATE_BLOCK).luminance(createLightLevelFromBoolBlockState(HoverElevatorBlock.POWERED, 15))));
     public static RegistrySupplier<BlockEntityType<HoverElevatorBlockEntity>> HOVER_ELEVATOR_ENTITY = BLOCK_ENTITIES.register("hover_elevator_entity", ()->BlockEntityType.Builder.create(HoverElevatorBlockEntity::new, HOVER_ELEVATOR.get()).build(null));
-    public static RegistrySupplier<Block> HOVER_REPEATER = BLOCKS.register("hover_repeater", ()->new HoverRepeaterBlock(AbstractBlock.Settings.copy(HexBlocks.SLATE_BLOCK).noCollision().breakInstantly().nonOpaque()));
+    public static RegistrySupplier<Block> HOVER_REPEATER = BLOCKS.register("hover_repeater", ()->new HoverRepeaterBlock(AbstractBlock.Settings.create().mapColor(MapColor.DEEPSLATE_GRAY).instrument(Instrument.BASEDRUM).strength(3.0F, 6.0F).sounds(BlockSoundGroup.DEEPSLATE).breakInstantly().nonOpaque()));
 
     public static RegistrySupplier<AmethystClusterBlock> PSEUDOAMETHYST_CLUSTER = BLOCKS.register("pseudoamethyst_cluster", ()-> new AmethystClusterBlock(7, 3, AbstractBlock.Settings.copy(Blocks.AMETHYST_CLUSTER)));
     public static RegistrySupplier<AmethystClusterBlock> PSEUDOAMETHYST_BUD_LARGE = BLOCKS.register("pseudoamethyst_bud_large", ()-> new AmethystClusterBlock(5, 3, AbstractBlock.Settings.copy(Blocks.LARGE_AMETHYST_BUD)));
