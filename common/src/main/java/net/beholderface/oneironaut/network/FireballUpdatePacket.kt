@@ -8,6 +8,7 @@ import net.minecraft.network.PacketByteBuf
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.Vec3d
 import net.beholderface.oneironaut.Oneironaut
+import net.minecraft.entity.Entity
 import java.util.ConcurrentModificationException
 
 
@@ -29,33 +30,37 @@ class FireballUpdatePacket(val targetVelocity : Vec3d, val entity : ExplosivePro
         val ID: Identifier = Identifier(Oneironaut.MOD_ID, "fireballupdate")
 
         @JvmStatic
-        fun deserialise(buffer: ByteBuf): FireballUpdatePacket {
+        fun deserialise(buffer: ByteBuf): FireballUpdatePacket? {
             val buf = PacketByteBuf(buffer)
             val targetVelocity = Vec3d(buf.readDouble(), buf.readDouble(), buf.readDouble())
             val entityPos = Vec3d(buf.readDouble(), buf.readDouble(), buf.readDouble())
             //val entityUUID = buf.readUuid()
             val entityID = buf.readInt()
-            var foundEntity : ExplosiveProjectileEntity? = null
-                    val world = MinecraftClient.getInstance().world
-                    foundEntity = world?.getEntityById(entityID) as ExplosiveProjectileEntity
-            return FireballUpdatePacket(targetVelocity, foundEntity)
+            var foundEntity : Entity? = null
+            val world = MinecraftClient.getInstance().world
+            foundEntity = world?.getEntityById(entityID)
+            if (foundEntity == null){
+                return null
+            }
+            return FireballUpdatePacket(targetVelocity, foundEntity as ExplosiveProjectileEntity)
         }
 
         @JvmStatic
-        fun handle(self: FireballUpdatePacket) {
+        fun handle(self: FireballUpdatePacket?) {
+            if (self == null){
+                return
+            } else if (self.entity == null){
+                return
+            }
             MinecraftClient.getInstance().execute {
                 val targetVelocity = self.targetVelocity
                 val entityToUpdate = self.entity
-                if (entityToUpdate != null){
-                    //OneironautClient.updatedFireballMap[entityToUpdate] = targetVelocity
-                    //doing it all here gave me a ConcurrentModificationException
-                    try {
-                        entityToUpdate.powerX = targetVelocity.x
-                        entityToUpdate.powerY = targetVelocity.y
-                        entityToUpdate.powerZ = targetVelocity.z
-                    } catch (e : ConcurrentModificationException){
-                        Oneironaut.LOGGER.debug("oopsie, concurrent modification!\n$e")
-                    }
+                try {
+                    entityToUpdate.powerX = targetVelocity.x
+                    entityToUpdate.powerY = targetVelocity.y
+                    entityToUpdate.powerZ = targetVelocity.z
+                } catch (e : ConcurrentModificationException){
+                    Oneironaut.LOGGER.debug("oopsie, concurrent modification!\n$e")
                 }
             }
         }
