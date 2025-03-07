@@ -9,7 +9,9 @@ import com.mojang.datafixers.util.Pair;
 import net.beholderface.oneironaut.MiscAPIKt;
 import net.beholderface.oneironaut.Oneironaut;
 import net.beholderface.oneironaut.block.HoverElevatorBlock;
+import net.beholderface.oneironaut.network.HoverliftAntiDesyncPacket;
 import net.beholderface.oneironaut.registry.OneironautBlockRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -21,6 +23,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.DyeColor;
@@ -157,6 +160,7 @@ public class HoverElevatorBlockEntity extends BlockEntity {
         return output;
     }
 
+    private static Set<ServerPlayerEntity> RECENT_USERS = new HashSet<>();
     public static void processHover(boolean isServer, long timestamp){
         Map<LivingEntity, Integer> relevantMap = isServer ? SERVER_HOVER_MAP : CLIENT_HOVER_MAP;
         double threshold = 0.75;
@@ -222,6 +226,9 @@ public class HoverElevatorBlockEntity extends BlockEntity {
             Vec3d velocity = entity.getVelocity();
             if (entity instanceof ServerPlayerEntity serverPlayerEntity){
                 velocity = PlayerPositionRecorder.getMotion(serverPlayerEntity);
+                if (serverPlayerEntity.hasStatusEffect(StatusEffects.SLOW_FALLING)){
+                    RECENT_USERS.add(serverPlayerEntity);
+                }
             }
             double antigravNum = lookingUp && up ? 0.08 : 0.01;
             boolean applyAntigrav = true;
@@ -237,6 +244,19 @@ public class HoverElevatorBlockEntity extends BlockEntity {
             }
             hoverVec = hoverVec.add(new Vec3d(0.0, applyAntigrav ? antigravNum : 0.0, 0.0));
             entity.addVelocity(hoverVec.x, hoverVec.y, hoverVec.z);
+        }
+        if (isServer){
+            MinecraftServer server = Oneironaut.getCachedServer();
+            if (server.getOverworld().getTime() % 10 == 0){
+                for (ServerPlayerEntity player : RECENT_USERS){
+                    if (!player.hasStatusEffect(StatusEffects.SLOW_FALLING)){
+                        HoverliftAntiDesyncPacket packet = new HoverliftAntiDesyncPacket();
+                        var pkt = ServerPlayNetworking.createS2CPacket(packet.getFabricId(), packet.toBuf());
+                        player.networkHandler.sendPacket(pkt);
+                    }
+                }
+                RECENT_USERS.clear();
+            }
         }
         relevantMap.clear();
     }

@@ -23,6 +23,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
@@ -47,6 +48,7 @@ public class Oneironaut {
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
     private static final List<Item> randomWispPigments = new ArrayList<>();
     private static ServerWorld noosphere = null;
+    private static MinecraftServer server = null;
 
 
     public static void init() {
@@ -61,6 +63,7 @@ public class Oneironaut {
         OneironautRecipeTypes.registerTypes(OneironautRecipeTypes.Companion.bind(Registries.RECIPE_TYPE));
 
         LifecycleEvent.SERVER_STARTED.register((startedserver) ->{
+            server = startedserver;
             noosphere = stringToWorld("oneironaut:noosphere", startedserver);
             IdeaInscriptionManager ideaState = IdeaInscriptionManager.getServerState(startedserver);
             IdeaInscriptionManager.cleanMap(startedserver, ideaState);
@@ -144,5 +147,11 @@ public class Oneironaut {
             throw new IllegalStateException("getNoosphere method called before server start");
         }
         return noosphere;
+    }
+    public static MinecraftServer getCachedServer(){
+        if (server == null){
+            throw new IllegalStateException("getCachedServer method called before server start");
+        }
+        return server;
     }
 }
