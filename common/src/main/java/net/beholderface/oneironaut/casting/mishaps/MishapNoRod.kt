@@ -2,6 +2,7 @@ package net.beholderface.oneironaut.casting.mishaps
 
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.GarbageIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.Mishap
 import at.petrak.hexcasting.api.pigment.FrozenPigment
@@ -25,6 +26,7 @@ class MishapNoRod(val remote : Boolean) : Mishap() {
     }
 
     override fun execute(ctx: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {
+        stack.add(GarbageIota())
         ctx.mishapEnvironment.dropHeldItems()
         //ctx.world.createExplosion(null, pos.x + 0.5, pos.y + 0.5, pos.z + 0.5, 0.25f, Explosion.DestructionType.NONE)
     }

@@ -19,10 +19,7 @@ import net.beholderface.oneironaut.casting.lichdom.OpLichify;
 import net.beholderface.oneironaut.casting.lichdom.OpSetPassiveHex;
 import net.beholderface.oneironaut.casting.patterns.*;
 import net.beholderface.oneironaut.casting.patterns.rod.*;
-import net.beholderface.oneironaut.casting.patterns.spells.OpAdvanceAutomaton;
-import net.beholderface.oneironaut.casting.patterns.spells.OpCircle;
-import net.beholderface.oneironaut.casting.patterns.spells.OpSignItem;
-import net.beholderface.oneironaut.casting.patterns.spells.OpWriteBottomlessTrinket;
+import net.beholderface.oneironaut.casting.patterns.spells.*;
 import net.beholderface.oneironaut.casting.patterns.spells.great.*;
 import net.beholderface.oneironaut.casting.patterns.spells.idea.OpGetIdeaTimestamp;
 import net.beholderface.oneironaut.casting.patterns.spells.idea.OpGetIdeaWriter;
@@ -93,7 +90,8 @@ public class OneironautPatternRegistry {
     public static HexPattern QUERY_LICH = register(HexPattern.fromAngles("edew", HexDir.NORTH_WEST), "getislich", new OpIsLich());
     public static HexPattern SET_LICH_TICKHEX = register(HexPattern.fromAngles("edeq", HexDir.NORTH_WEST), "setlichtickhex", new OpSetPassiveHex());*/
 
-
+    public static HexPattern EVAL_EXTRADIMENSIONAL = register(HexPattern.fromAngles("wqwqwqwqwqwaqdeaqqe", HexDir.WEST), "extradimensionaleval", new OpEvalExtradimensional());
+    public static HexPattern SHIFT_SENTINEL = register(HexPattern.fromAngles("wwaeawwaeqqwqwqwqwqwq", HexDir.EAST), "shiftsentinel", new OpShiftSentinel());
     //cell spells
     //public static List<Triple<String[][], Identifier, ICellSpell>> CELL_PATTERNS = new ArrayList<>();
 

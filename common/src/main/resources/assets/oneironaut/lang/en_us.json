@@ -38,6 +38,8 @@
   "hexcasting.action.oneironaut:getsoulprint": "Soulprint Reflection",
   "hexcasting.action.oneironaut:signitem": "Sign Item",
   "hexcasting.action.oneironaut:checksignature": "Signature Purification",
+  "hexcasting.action.oneironaut:extradimensionaleval": "Heimdall's Gambit",
+  "hexcasting.action.oneironaut:shiftsentinel": "Shift Sentinel",
 
   "this.is.a.comment.2": "Block/Item names--------------------------------------------------------------------------------------------",
   "item.oneironaut.pseudoamethyst_shard": "Pseudoamethyst Shard",
@@ -109,6 +111,7 @@
   "oneironaut.entry.soulprints": "Soulprints",
   "oneironaut.entry.hover_elevator": "Hoverlifts",
   "oneironaut.entry.flayrevival": "Artificial Minds",
+  "oneironaut.entry.heimdall": "Transdimensional Casting",
 
   "this.is.a.comment.4": "Book pages--------------------------------------------------------------------------------------------",
   "oneironaut.page.spaceswap.1": "Accepts two lists of two vectors, to define two cuboids, and a Spatial Imprint. These cuboids must have the exact same dimensions and rotation.",
@@ -251,6 +254,9 @@
   "oneironaut.page.monkfruit.4": "$(o)It's not rocket science.$()",
   "oneironaut.page.library_card.1": "In my search for a truly universal data storage method, I have designed a small device which allows me to read from Akashic Records in other dimensions while on my person. I need only write a spatial imprint to the item, and any future akashic read operations will be redirected to the stored dimension.$(br)Unfortunately, it does not allow me to $(o)write to$() them, but this is certainly better than nothing.",
   "oneironaut.page.library_card.2": "$(o)It seems to exude some kind of sticky gloop.$()",
+  "oneironaut.page.heimdall.1": "A strange pattern that appears to be a variant of Hermes' Gambit. Accepts a spatial imprint and an executable iota, and attempts to cast the iota in the corresponding dimension.",
+  "oneironaut.page.heimdall.2": "While it does allow me to cast across dimensions, it is not the perfect solution that I have been searching for. For one thing, it seems to work only when cast directly by me, rather than via a spell circle or wisp. Additionally, media-consuming patterns cast in this way have their cost increased by 25%%. Finally, since I am not physically present in the target dimension, I need to use my Greater Sentinel (or other ambit-boosting effects) in order to affect anything in there.",
+  "oneironaut.page.heimdall.3": "Accepts a spatial imprint, and moves my sentinel to the corresponding dimension, with its coordinates scaled appropriately. Costs one amethyst shard. Mishaps if I do not currently have a sentinel.",
 
   "this.is.a.comment.5": "Advancements--------------------------------------------------------------------------------------------",
   "oneironaut.advancements.noosphere.enter": "A Realm of Thought and Dream",
@@ -294,6 +300,7 @@
   "hexcasting.mishap.oneironaut:norequirediota": "The slime demands %s",
   "hexcasting.mishap.oneironaut:requiresdifferententities": "an entity different from the target",
   "hexcasting.mishap.oneironaut:nostaff": "%s expected to be cast using a staff.",
+  "hexcasting.mishap.oneironaut:nosentinel": "Could not find a sentinel to move.",
   "oneironaut.mishap.noitemframe": "an item frame",
   "oneironaut.mishap.invalidideakey": "a vector, player, or soulprint",
   "oneironaut.mishap.unenlightenedtarget": "an enlightened player",

@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv;
 import net.beholderface.oneironaut.Oneironaut;
 import net.beholderface.oneironaut.casting.NoosphereAmbitExtensionComponent;
 import net.beholderface.oneironaut.casting.lichdom.LichMediaExtractComponent;
-import net.beholderface.oneironaut.casting.lichdom.LichPassiveHexEnv;
+import net.beholderface.oneironaut.casting.environments.LichPassiveHexEnv;
 
 public class OneironautCastEnvComponents {
     public static void init(){

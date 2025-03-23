@@ -27,7 +27,7 @@ public abstract class MiscWispMixin
 
     //the code for negating wisp upkeep
     @Unique
-    private static final Map<RegistryKey<World>, Map<BlockPos, Vec3d>> gateMap = NoosphereGateEntity.gateLocationMap;
+    private static final Map<RegistryKey<World>, Map<BlockPos, Vec3d>> oneironaut$gateMap = NoosphereGateEntity.gateLocationMap;
 
     @WrapOperation(method = "deductMedia",
             at = @At(value = "INVOKE",
@@ -62,8 +62,8 @@ public abstract class MiscWispMixin
         World world = ((Entity)wisp).getEntityWorld();
         RegistryKey<World> worldKey = world.getRegistryKey();
         String worldName = worldKey.getValue().toString();
-        if(gateMap.containsKey(worldKey) && !(worldName.equals("oneironaut:noosphere"))){
-            Map<BlockPos, Vec3d> gatePosMap = gateMap.get(worldKey);
+        if(oneironaut$gateMap.containsKey(worldKey) && !(worldName.equals("oneironaut:noosphere"))){
+            Map<BlockPos, Vec3d> gatePosMap = oneironaut$gateMap.get(worldKey);
             for (Map.Entry<BlockPos, Vec3d> map : gatePosMap.entrySet()){
                 if (((Entity)wisp).getPos().isInRange(map.getValue(), 8.0)){
                     if(world.getBlockState(map.getKey()).getBlock().equals(OneironautBlockRegistry.NOOSPHERE_GATE.get().getDefaultState().getBlock())){

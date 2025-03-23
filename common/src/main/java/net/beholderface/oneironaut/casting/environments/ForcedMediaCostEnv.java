@@ -1,4 +1,4 @@
-package net.beholderface.oneironaut.casting;
+package net.beholderface.oneironaut.casting.environments;
 
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;

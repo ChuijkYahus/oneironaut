@@ -4,6 +4,7 @@ import at.petrak.hexcasting.api.casting.eval.ResolvedPatternType;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM;
 import at.petrak.hexcasting.api.utils.NBTHelper;
 import net.beholderface.oneironaut.Oneironaut;
+import net.beholderface.oneironaut.casting.environments.LichPassiveHexEnv;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;

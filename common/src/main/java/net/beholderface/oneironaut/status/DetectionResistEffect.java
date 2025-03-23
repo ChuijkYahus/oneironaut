@@ -5,7 +5,7 @@ import at.petrak.hexcasting.api.casting.mishaps.Mishap;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.common.lib.HexDamageTypes;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
-import net.beholderface.oneironaut.casting.ForcedMediaCostEnv;
+import net.beholderface.oneironaut.casting.environments.ForcedMediaCostEnv;
 import net.beholderface.oneironaut.item.BottomlessMediaItem;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;

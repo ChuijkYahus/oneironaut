@@ -2,6 +2,7 @@ package net.beholderface.oneironaut.casting.mishaps
 
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.GarbageIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.Mishap
 import at.petrak.hexcasting.api.pigment.FrozenPigment
@@ -21,6 +22,7 @@ class MishapMissingEnchant(val stack: ItemStack, val enchant: Enchantment) : Mis
         error("oneironaut:missingenchant", stack.name, Text.translatable(enchant.translationKey))
 
     override fun execute(ctx: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {
+        stack.add(GarbageIota())
         if (ctx.castingEntity != null && ctx.castingEntity is ServerPlayerEntity){
             (ctx.castingEntity as ServerPlayerEntity).setExperienceLevel(((ctx.castingEntity as ServerPlayerEntity).experienceLevel - 3).coerceAtLeast(0))
         }

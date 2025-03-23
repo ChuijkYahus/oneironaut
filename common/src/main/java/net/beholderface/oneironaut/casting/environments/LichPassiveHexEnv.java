@@ -1,14 +1,15 @@
-package net.beholderface.oneironaut.casting.lichdom;
+package net.beholderface.oneironaut.casting.environments;
 
 import at.petrak.hexcasting.api.casting.eval.env.PlayerBasedCastEnv;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
+import net.beholderface.oneironaut.casting.lichdom.LichData;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 
 public class LichPassiveHexEnv extends PlayerBasedCastEnv {
     public final LichData lichData;
-    protected LichPassiveHexEnv(ServerPlayerEntity caster, LichData lichData) {
+    public LichPassiveHexEnv(ServerPlayerEntity caster, LichData lichData) {
         super(caster, null);
         this.lichData = lichData;
     }

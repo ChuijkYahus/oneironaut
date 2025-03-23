@@ -13,11 +13,12 @@
     "DecorativeWispMixin",
     "EntityRaycastImmunityMixin",
     "EraseSoulprintSignatureMixin",
-    "PlayerCastEnvInvoker",
+    "GeneralCastEnvInvoker",
     "IllegalIotasMixin",
     "ImpulseRedirectFireballMixin",
     "MiscWispMixin",
     "OpBreakBlockImmunityMixin",
+    "PlayerCastEnvInvoker",
     "SentinelTrapMixinSummon",
     "ZoneDistImmunityMixin"
   ],

@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.misc.MediaConstants
-import net.beholderface.oneironaut.casting.ReverbRodCastEnv
+import net.beholderface.oneironaut.casting.environments.ReverbRodCastEnv
 import net.beholderface.oneironaut.casting.mishaps.MishapNoRod
 import net.minecraft.text.Text
 

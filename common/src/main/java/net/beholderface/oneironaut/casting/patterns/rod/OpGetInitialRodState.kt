@@ -6,11 +6,8 @@ import at.petrak.hexcasting.api.casting.iota.DoubleIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.iota.Vec3Iota
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster
-import net.beholderface.oneironaut.casting.ReverbRodCastEnv
+import net.beholderface.oneironaut.casting.environments.ReverbRodCastEnv
 import net.beholderface.oneironaut.casting.mishaps.MishapNoRod
-import net.beholderface.oneironaut.isUsingRod
-import net.beholderface.oneironaut.item.ReverberationRod
 
 class OpGetInitialRodState(val mode: Int) : ConstMediaAction {
     override val argc = 0

@@ -1,4 +1,4 @@
-package net.beholderface.oneironaut.casting;
+package net.beholderface.oneironaut.casting.environments;
 
 import at.petrak.hexcasting.api.casting.ParticleSpray;
 import at.petrak.hexcasting.api.casting.eval.CastResult;
@@ -11,8 +11,6 @@ import at.petrak.hexcasting.common.lib.hex.HexEvalSounds;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
-
-import java.util.UUID;
 
 public class ReverbRodCastEnv extends PackagedItemCastEnv {
     public ReverbRodCastEnv(ServerPlayerEntity caster, Hand castingHand, boolean active) {

@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds;
 import net.beholderface.oneironaut.Oneironaut;
-import net.beholderface.oneironaut.casting.ReverbRodCastEnv;
+import net.beholderface.oneironaut.casting.environments.ReverbRodCastEnv;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

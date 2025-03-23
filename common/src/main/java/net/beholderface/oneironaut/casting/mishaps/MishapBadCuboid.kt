@@ -2,6 +2,7 @@ package net.beholderface.oneironaut.casting.mishaps
 
 import at.petrak.hexcasting.api.casting.ParticleSpray
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
+import at.petrak.hexcasting.api.casting.iota.GarbageIota
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.mishaps.Mishap
 import at.petrak.hexcasting.api.pigment.FrozenPigment
@@ -21,6 +22,7 @@ class MishapBadCuboid(val stub : String) : Mishap() {
         error("oneironaut:badcuboid.$stub")
 
     override fun execute(ctx: CastingEnvironment, errorCtx: Context, stack: MutableList<Iota>) {
+        stack.add(GarbageIota())
         ctx.world.createExplosion(null, ctx.mishapSprayPos().x, ctx.mishapSprayPos().y, ctx.mishapSprayPos().z, 0.25f, World.ExplosionSourceType.NONE)
     }
 
